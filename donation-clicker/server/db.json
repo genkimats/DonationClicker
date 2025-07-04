@@ -1,0 +1,14 @@
+{
+  "users": {
+    "genki": {
+      "username": "genki",
+      "password": "123",
+      "donated": 1.3,
+      "clicks": 13
+    }
+  },
+  "totals": {
+    "totalDonations": 1.3,
+    "totalChildrenSaved": 0
+  }
+}
