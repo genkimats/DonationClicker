@@ -1,44 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   ComposableMap,
   Geographies,
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
-import { socket } from "../socket";
 import "../css/Leaderboard.css";
 
-// UPDATED: This is a new, working URL for the map data.
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-
-// Example: Highlighting West African countries known for cacao production
 const highlightedCountries = ["CIV", "GHA", "NGA", "CMR"];
+const SDG_GOAL_CHILD_LABOR = 1000000;
 
-const SDG_GOAL_CHILD_LABOR = 1000000; // Example goal in dollars
-
-function Leaderboard() {
-  const [leaderboard, setLeaderboard] = useState([]);
-  const [totals, setTotals] = useState({
-    totalDonations: 0,
-    totalChildrenSaved: 0,
-  });
-
-  useEffect(() => {
-    // Handler functions
-    const handleUpdateLeaderboard = (data) => setLeaderboard(data);
-    const handleUpdateTotals = (data) => setTotals(data);
-
-    // Listen for events
-    socket.on("updateLeaderboard", handleUpdateLeaderboard);
-    socket.on("updateTotals", handleUpdateTotals);
-
-    // Clean up listeners on component unmount
-    return () => {
-      socket.off("updateLeaderboard", handleUpdateLeaderboard);
-      socket.off("updateTotals", handleUpdateTotals);
-    };
-  }, []); // Empty dependency array ensures this runs only once
-
+// This component is now much simpler and just displays the data it receives.
+function Leaderboard({ leaderboard, totals }) {
   const progress = (totals.totalDonations / SDG_GOAL_CHILD_LABOR) * 100;
 
   return (
@@ -72,7 +46,6 @@ function Leaderboard() {
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    // The API now provides country codes in a different format
                     fill={
                       highlightedCountries.includes(geo.properties.ISO_A3)
                         ? "#E42"

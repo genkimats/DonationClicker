@@ -18,7 +18,7 @@ function MainPage({ user, setUser }) {
         );
         setUser(localUser);
       }
-    }, 5000); // Save every 5 seconds
+    }, 2000); // Save every 5 seconds
 
     return () => clearInterval(interval);
   }, [localUser, user, setUser]);
