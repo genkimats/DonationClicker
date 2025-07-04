@@ -1,0 +1,14 @@
+.clicker-button {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ffd700;
+  border: 5px solid #daa520;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.clicker-button:active {
+  transform: scale(0.95);
+}

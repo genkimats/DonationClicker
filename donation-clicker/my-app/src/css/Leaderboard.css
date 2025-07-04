@@ -1,0 +1,14 @@
+.leaderboard-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+.leaderboard-list,
+.global-stats {
+  width: 45%;
+}
+
+ol {
+  list-style-position: inside;
+}

@@ -1,0 +1,16 @@
+.main-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.section {
+  width: 30%;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.middle {
+  background-color: #f9f9f9;
+}
