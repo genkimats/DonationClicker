@@ -51,3 +51,4 @@ Thumbs.db
 /my-app/.env.development.local
 /my-app/.env.test.local
 /my-app/.env.production.local
+donation-clicker/my-app/node_modules/.cache/default-development/
