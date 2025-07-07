@@ -8,16 +8,35 @@ function Visualization({ user }) {
   const progressToNextChild =
     ((user.donated % DONATION_PER_CHILD) / DONATION_PER_CHILD) * 100;
 
-  const getImageForChildrenSaved = () => {
-    if (childrenSaved >= 5) return "school.jpg"; // Placeholder image names
-    if (childrenSaved >= 2) return "clean_water.jpg";
-    if (childrenSaved >= 1) return "food.jpg";
-    return "cacao_farm.jpg";
-  };
+  // Create an array to easily render the houses
+  const houses = Array.from({ length: childrenSaved });
 
   return (
-    <div className="visualization">
-      <h2>Impact Visualization</h2>
+    <div className="visualization-container">
+      <h2>Your Impact</h2>
+
+      {/* This is the main scene */}
+      <div className="scene">
+        {/* The walking child GIF */}
+        <img
+          src="/images/child-walking.jpg"
+          alt="child walking"
+          className="walking-child"
+        />
+
+        {/* Render a house for each child saved */}
+        {houses.map((_, index) => (
+          <img
+            key={index}
+            src="/images/house.png"
+            alt="house"
+            className="house"
+            // Position each house differently
+            style={{ left: `${10 + index * 15}%`, bottom: "10%" }}
+          />
+        ))}
+      </div>
+
       <p>Children Saved: {childrenSaved}</p>
 
       <h4>Progress to saving the next child:</h4>
@@ -27,13 +46,6 @@ function Visualization({ user }) {
           style={{ width: `${progressToNextChild}%` }}
         ></div>
       </div>
-
-      <h4>Quality of Life Improvement:</h4>
-      <img
-        src={`/images/${getImageForChildrenSaved()}`}
-        alt="Quality of life visualization"
-        className="visualization-image"
-      />
     </div>
   );
 }

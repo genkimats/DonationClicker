@@ -1,15 +1,43 @@
-.visualization-image {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-top: 1rem;
+.visualization-container {
+  text-align: center;
 }
 
+/* The main container for the scene */
+.scene {
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  background-image: url("/public/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  position: relative; /* This is crucial for positioning child elements */
+  overflow: hidden; /* Hides parts of the GIF that move outside the box */
+  margin-bottom: 1rem;
+}
+
+/* The animated walking child */
+.walking-child {
+  position: absolute;
+  bottom: 5%; /* Position near the bottom */
+  height: 30%; /* Adjust size as needed */
+  /* Link to the animation keyframes */
+  animation: walk-across 20s linear infinite;
+}
+
+/* The houses that appear with progress */
+.house {
+  position: absolute;
+  height: 25%; /* Adjust size as needed */
+  z-index: 5; /* Ensures houses appear in front of the background */
+}
+
+/* The progress bar styles */
 .progress-bar-container {
   width: 100%;
   background-color: #e0e0e0;
   border-radius: 5px;
   overflow: hidden;
+  margin-top: 0.5rem;
 }
 
 .progress-bar {
@@ -18,4 +46,28 @@
   text-align: center;
   line-height: 20px;
   color: white;
+}
+
+/* Keyframes define the animation steps */
+@keyframes walk-across {
+  0% {
+    left: -10%; /* Start off-screen to the left */
+    transform: scaleX(1); /* Facing right */
+  }
+  49% {
+    left: 100%; /* Move to the far right */
+    transform: scaleX(1); /* Still facing right */
+  }
+  50% {
+    left: 100%; /* Stay at the right */
+    transform: scaleX(-1); /* Flip to face left */
+  }
+  99% {
+    left: -10%; /* Move back to the far left */
+    transform: scaleX(-1); /* Still facing left */
+  }
+  100% {
+    left: -10%;
+    transform: scaleX(1); /* Flip back to face right for the next loop */
+  }
 }
