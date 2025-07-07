@@ -19,36 +19,34 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
-*.pack
 
 # Server
 # ----------------
 # Dependency directory
-/server/node_modules
+donation-clicker/server/node_modules
 
 # Environment variables
-/server/.env
+donation-clicker/server/.env
 
 # Simple database file (contains user data)
-/server/db.json
+donation-clicker/server/db.json
 
 
 # Client (Create React App)
 # ----------------
 # Dependency directories
-/my-app/node_modules
-/my-app/.pnp
+donation-clicker/my-app/node_modules
+donation-clicker/my-app/.pnp
 .pnp.js
 
 # Build directory
-/my-app/build
+donation-clicker/my-app/build
 
 # Testing
-/my-app/coverage
+donation-clicker/my-app/coverage
 
 # Environment variables
-/my-app/.env.local
-/my-app/.env.development.local
-/my-app/.env.test.local
-/my-app/.env.production.local
-donation-clicker/my-app/node_modules/.cache/default-development/
+donation-clicker/my-app/.env.local
+donation-clicker/my-app/.env.development.local
+donation-clicker/my-app/.env.test.local
+donation-clicker/my-app/.env.production.local
