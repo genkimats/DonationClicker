@@ -23,6 +23,12 @@
       "password": "dfgh",
       "donated": 0,
       "clicks": 0
+    },
+    "fg": {
+      "username": "fg",
+      "password": "dfg",
+      "donated": 0,
+      "clicks": 0
     }
   },
   "totals": {
