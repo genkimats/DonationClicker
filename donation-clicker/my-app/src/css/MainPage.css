@@ -10,32 +10,6 @@ body > #root > nav {
   padding: 20px;
   box-sizing: border-box;
 }
-.header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  flex-shrink: 0;
-}
-.logo-container {
-  background-color: white;
-  padding: 5px;
-  border: 5px solid #d0665f;
-  width: 25%;
-}
-.sdgs-image {
-  width: 100%;
-  display: block;
-}
-.header-placeholder {
-  height: 50px;
-  background-color: #d0665f;
-  flex-grow: 1;
-  margin-left: 20px;
-  display: flex;
-  justify-content: flex-end; 
-  align-items: center;
-  padding-right: 40px; 
-}
 
 /* --- FINAL STYLES FOR NAVIGATION LINKS --- */
 /* This targets the <nav> element inside our header to remove the unwanted background */
@@ -56,16 +30,15 @@ body > #root > nav {
   padding: 0;
   color: white;
   text-decoration: none;
-  font-size: 1.3rem; 
+  font-size: 1.3rem;
   font-weight: bold;
   transition: transform 0.2s ease-in-out;
 }
 
 .nav-links a:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 /* --- END OF FINAL STYLES --- */
-
 
 .content-area {
   display: flex;

@@ -5,6 +5,7 @@ import MainPage from "./pages/MainPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import { socket } from "./socket";
 import "./css/App.css";
+import sdgsLogo from "./assets/sdgs-logo.png";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,10 +33,17 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/leaderboard">Leaderboard</Link>
-      </nav>
+      <div className="header">
+        <div className="logo-container">
+          <img src={sdgsLogo} alt="SDGs Logo" className="sdgs-image" />
+        </div>
+        <div className="header-placeholder">
+          <nav className="nav-links">
+            <Link to="/">Home</Link>
+            <Link to="/leaderboard">Leaderboard</Link>
+          </nav>
+        </div>
+      </div>
       <Routes>
         <Route
           path="/"
