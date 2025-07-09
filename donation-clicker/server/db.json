@@ -29,6 +29,18 @@
       "password": "dfg",
       "donated": 0,
       "clicks": 0
+    },
+    "sdfgh": {
+      "username": "sdfgh",
+      "password": "456",
+      "donated": 0,
+      "clicks": 0
+    },
+    "fgh": {
+      "username": "fgh",
+      "password": "567",
+      "donated": 0,
+      "clicks": 0
     }
   },
   "totals": {

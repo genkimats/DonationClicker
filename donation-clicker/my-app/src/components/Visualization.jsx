@@ -1,40 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Visualization.css";
 
 const DONATION_PER_CHILD = 500;
 
 function Visualization({ user }) {
+  const [walkingChildren, setWalkingChildren] = useState([]);
+  const [lastDonated, setLastDonated] = useState(0);
+
   const childrenSaved = Math.floor(user.donated / DONATION_PER_CHILD);
   const progressToNextChild =
     ((user.donated % DONATION_PER_CHILD) / DONATION_PER_CHILD) * 100;
 
-  // Create an array for houses (based on children saved)
   const houses = Array.from({ length: childrenSaved });
 
-  // Create an array for walking children (based on dollars donated)
-  const walkingChildren = Array.from({ length: Math.floor(user.donated) });
+  // Detect donation increase and add a new walking child
+  useEffect(() => {
+    const prevCount = Math.floor(lastDonated);
+    const newCount = Math.floor(user.donated);
+
+    if (newCount > prevCount) {
+      const numToAdd = newCount - prevCount;
+      const newChildren = [];
+
+      for (let i = 0; i < numToAdd; i++) {
+        const bottom = 10 + Math.random() * 30; // 10% ~ 40%
+        const duration = 3 + Math.random() * 5; // 3s ~ 8s
+        const direction = Math.random() < 0.5 ? "left" : "right";
+        newChildren.push({ bottom, duration, direction, id: Date.now() + i });
+      }
+
+      setWalkingChildren((prev) => [...prev, ...newChildren]);
+      setLastDonated(user.donated);
+    }
+  }, [user.donated, lastDonated]);
 
   return (
     <div className="visualization-container">
       <h2>Your Impact</h2>
 
-      {/* This is the main scene */}
       <div className="scene">
-        {/* Render walking children */}
-        {walkingChildren.map((_, index) => (
-          <img
-            key={`child-${index}`}
-            src="/images/child-walking.jpg"
-            alt="child walking"
-            className="walking-child"
-            style={{
-              left: `${5 + (index % 10) * 9}%`, // spread across the scene
-              bottom: `${20 + Math.floor(index / 10) * 12}%`, // stack rows
-            }}
-          />
-        ))}
+        {/* Render walking children with individual settings */}
+        {walkingChildren.map((child) => {
+          const className =
+            "walking-child " +
+            (child.direction === "left" ? "walk-left" : "walk-right");
 
-        {/* Render a house for each child saved */}
+          return (
+            <img
+              key={child.id}
+              src="/images/child-walking.jpg"
+              alt="child walking"
+              className={className}
+              style={{
+                bottom: `${child.bottom}%`,
+                animationDuration: `${child.duration}s`,
+                transform: `scaleX(${child.direction === "left" ? -1 : 1})`,
+              }}
+            />
+          );
+        })}
+
+        {/* Render houses based on children saved */}
         {houses.map((_, index) => (
           <img
             key={`house-${index}`}
