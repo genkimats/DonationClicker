@@ -1,0 +1,50 @@
+{
+  "users": {
+    "genki": {
+      "username": "genki",
+      "password": "123",
+      "donated": 4.4,
+      "clicks": 44
+    },
+    "user": {
+      "username": "user",
+      "password": "123",
+      "donated": 0,
+      "clicks": 0
+    },
+    "jesse": {
+      "username": "jesse",
+      "password": "rwjgoirjgoirjgrgiojgriojgriwojgrwiojgwoijgeoiwgieowjgeowijgeiowjgewjgeiowjgeiowjgewiojgeiowhgeiowhgeiowhgieowjgeiowjgeowgjeowjgewogjewiogjewiojgkofdjwelkgko3phgoiwejgiowrjgouwerhgeiowjgewoi",
+      "donated": 0,
+      "clicks": 0
+    },
+    "hee": {
+      "username": "hee",
+      "password": "dfgh",
+      "donated": 0,
+      "clicks": 0
+    },
+    "fg": {
+      "username": "fg",
+      "password": "dfg",
+      "donated": 0,
+      "clicks": 0
+    },
+    "sdfgh": {
+      "username": "sdfgh",
+      "password": "456",
+      "donated": 0,
+      "clicks": 0
+    },
+    "fgh": {
+      "username": "fgh",
+      "password": "567",
+      "donated": 0,
+      "clicks": 0
+    }
+  },
+  "totals": {
+    "totalDonations": 4.4,
+    "totalChildrenSaved": 0
+  }
+}
