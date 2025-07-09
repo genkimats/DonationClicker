@@ -1,0 +1,52 @@
+# General
+# ----------------
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Server
+# ----------------
+# Dependency directory
+donation-clicker/server/node_modules
+
+# Environment variables
+donation-clicker/server/.env
+
+# Simple database file (contains user data)
+donation-clicker/server/db.json
+
+
+# Client (Create React App)
+# ----------------
+# Dependency directories
+donation-clicker/my-app/node_modules
+donation-clicker/my-app/.pnp
+.pnp.js
+
+# Build directory
+donation-clicker/my-app/build
+
+# Testing
+donation-clicker/my-app/coverage
+
+# Environment variables
+donation-clicker/my-app/.env.local
+donation-clicker/my-app/.env.development.local
+donation-clicker/my-app/.env.test.local
+donation-clicker/my-app/.env.production.local

@@ -1,20 +1,122 @@
-.achievements ul {
-  list-style-type: none;
+/* Main container for the grid */
+.achievements-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* The grid layout for the hexagons */
+.hexagon-grid {
+  list-style: none;
   padding: 0;
+  margin: 0;
+  display: grid;
+  /* Creates a 3-column grid */
+  grid-template-columns: repeat(3, 1fr); 
+  /* Defines the gap between hexagons */
+  gap: 8px;
+  width: 100%;
+  max-width: 300px; /* Constrains the grid width */
 }
 
-.achievements li {
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-  border-radius: 5px;
+/* Base styling for each hexagon item */
+.hexagon {
+  position: relative;
+  /* This ensures the hexagon maintains its aspect ratio */
+  width: 100%;
+  padding-bottom: 115.47%; 
 }
 
-.locked {
-  background-color: #f0f0f0;
-  color: #aaa;
+.hexagon-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
 
-.unlocked {
-  background-color: #d4edda;
-  color: #155724;
+/* Styling for the achievement image or the locked icon wrapper */
+.hexagon-inner .unlocked,
+.hexagon-inner .locked-icon-wrapper {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.hexagon-label {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0 5px;
+}
+
+.hexagon:has(.unlocked) .hexagon-inner {
+  background-color: #fdf0ec;
+}
+
+.hexagon:has(.unlocked) .hexagon-label {
+  color: #c75b54;
+}
+
+/* --- Styles for the Achievement Popup --- */
+.achievement-popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-150%); /* Start off-screen */
+  background-color: #d0665f;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 4px solid #e49e7b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.achievement-popup.show {
+  transform: translateX(-50%) translateY(0); /* Slide into view */
+}
+
+.popup-icon {
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.popup-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #aeffb2; /* Bright green color */
+}
+
+.popup-name {
+  font-size: 1rem;
+  font-weight: 500;
 }

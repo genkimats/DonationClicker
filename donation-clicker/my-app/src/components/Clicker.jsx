@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/Clicker.css";
+import coinImage from "../assets/coin.png";
 
 function Clicker({ user, setUser }) {
   const handleClick = () => {
@@ -11,12 +12,8 @@ function Clicker({ user, setUser }) {
   };
 
   return (
-    <div>
-      <h2>Click to Donate!</h2>
-      <button className="clicker-button" onClick={handleClick}>
-        $
-      </button>
-      <h3>Your Donations: ${user.donated.toFixed(2)}</h3>
+    <div className="clicker-container" onClick={handleClick}>
+      <img src={coinImage} alt="Click to Donate" className="coin-image" />
     </div>
   );
 }

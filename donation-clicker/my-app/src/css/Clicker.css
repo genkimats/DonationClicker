@@ -1,14 +1,13 @@
-.clicker-button {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background-color: #ffd700;
-  border: 5px solid #daa520;
-  font-size: 3rem;
+.clicker-container {
+  margin: 15px 0;
+}
+.coin-image {
+  /* MODIFIED: Increased size for more impact */
+  width: 140px;
+  height: 140px;
   cursor: pointer;
   transition: transform 0.1s;
 }
-
-.clicker-button:active {
-  transform: scale(0.95);
+.coin-image:active {
+  transform: scale(0.9);
 }

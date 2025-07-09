@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Visualization.css";
+import "../css/Visualization.css"; // We will create this file
 
 const DONATION_PER_CHILD = 500;
 
@@ -9,7 +9,7 @@ function Visualization({ user }) {
     ((user.donated % DONATION_PER_CHILD) / DONATION_PER_CHILD) * 100;
 
   const getImageForChildrenSaved = () => {
-    if (childrenSaved >= 5) return "school.jpg"; // Placeholder image names
+    if (childrenSaved >= 5) return "school.jpg";
     if (childrenSaved >= 2) return "clean_water.jpg";
     if (childrenSaved >= 1) return "food.jpg";
     return "cacao_farm.jpg";

@@ -1,0 +1,28 @@
+.piggy-bank-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  flex-grow: 1;
+  align-items: center;
+}
+.piggy-bank {
+  position: relative;
+  /* MODIFIED: Increased size to fill the space */
+  width: 90%;
+  max-width: 280px;
+}
+.piggy-bank-image {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+.piggy-bank-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffd700;
+  z-index: 1;
+  transition: height 0.5s ease-in-out;
+}
