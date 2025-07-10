@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../css/Visualization.css";
 
-const DONATION_PER_CHILD = 500;
+const DONATION_PER_CHILD = 1;
 
+// The isPopupVisible prop is no longer needed here
 function Visualization({ user }) {
   const [walkingChildren, setWalkingChildren] = useState([]);
   const [lastDonated, setLastDonated] = useState(0);
@@ -13,38 +14,33 @@ function Visualization({ user }) {
 
   const houses = Array.from({ length: childrenSaved });
 
-  // Detect donation increase and add a new walking child
+  // Your existing logic for walking children remains untouched
   useEffect(() => {
     const prevCount = Math.floor(lastDonated);
     const newCount = Math.floor(user.donated);
-
     if (newCount > prevCount) {
       const numToAdd = newCount - prevCount;
       const newChildren = [];
-
       for (let i = 0; i < numToAdd; i++) {
-        const bottom = 10 + Math.random() * 30; // 10% ~ 40%
-        const duration = 3 + Math.random() * 5; // 3s ~ 8s
+        const bottom = 10 + Math.random() * 30;
+        const duration = 3 + Math.random() * 5;
         const direction = Math.random() < 0.5 ? "left" : "right";
         newChildren.push({ bottom, duration, direction, id: Date.now() + i });
       }
-
       setWalkingChildren((prev) => [...prev, ...newChildren]);
       setLastDonated(user.donated);
     }
   }, [user.donated, lastDonated]);
 
   return (
+    // The popup logic has been removed from here
     <div className="visualization-container">
       <h2>Your Impact</h2>
-
       <div className="scene">
-        {/* Render walking children with individual settings */}
         {walkingChildren.map((child) => {
           const className =
             "walking-child " +
             (child.direction === "left" ? "walk-left" : "walk-right");
-
           return (
             <img
               key={child.id}
@@ -59,8 +55,6 @@ function Visualization({ user }) {
             />
           );
         })}
-
-        {/* Render houses based on children saved */}
         {houses.map((_, index) => (
           <img
             key={`house-${index}`}
@@ -71,9 +65,7 @@ function Visualization({ user }) {
           />
         ))}
       </div>
-
       <p>Children Saved: {childrenSaved}</p>
-
       <h4>Progress to saving the next child:</h4>
       <div className="progress-bar-container">
         <div
