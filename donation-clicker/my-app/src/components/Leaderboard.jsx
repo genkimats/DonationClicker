@@ -1,14 +1,6 @@
 import React from "react";
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  ZoomableGroup,
-} from "react-simple-maps";
 import "../css/Leaderboard.css";
 
-const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-const highlightedCountries = ["CIV", "GHA", "NGA", "CMR"];
 const SDG_GOAL_CHILD_LABOR = 1000000;
 
 // This component is now much simpler and just displays the data it receives.
@@ -37,27 +29,6 @@ function Leaderboard({ leaderboard, totals }) {
         <div className="progress-bar-container">
           <div className="progress-bar" style={{ width: `${progress}%` }}></div>
         </div>
-
-        <ComposableMap projection="geoMercator">
-          <ZoomableGroup center={[0, 0]} zoom={1}>
-            <Geographies geography={geoUrl}>
-              {({ geographies }) =>
-                geographies.map((geo) => (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    fill={
-                      highlightedCountries.includes(geo.properties.ISO_A3)
-                        ? "#E42"
-                        : "#D6D6DA"
-                    }
-                    stroke="#FFF"
-                  />
-                ))
-              }
-            </Geographies>
-          </ZoomableGroup>
-        </ComposableMap>
       </div>
     </div>
   );
