@@ -22,6 +22,7 @@
   z-index: 4;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  user-select: none;
 }
 
 /* Walk left to right */
@@ -39,6 +40,7 @@
   position: absolute;
   height: 25%;
   z-index: 5;
+  user-select: none;
 }
 
 /* The progress bar styles */
@@ -109,6 +111,7 @@
 .bowing-child-gif {
   width: 150px;
   height: auto;
+  user-select: none;
 }
 
 @keyframes fade-in {

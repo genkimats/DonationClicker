@@ -75,7 +75,7 @@ function MainPage({ user, setUser }) {
         );
         setUser(localUser);
       }
-    }, 2000);
+    }, 100);
     return () => clearInterval(interval);
   }, [localUser, user, setUser]);
 

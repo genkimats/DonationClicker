@@ -18,6 +18,7 @@
 .sdgs-image {
   width: 100%;
   display: block;
+  user-select: none;
 }
 .header-placeholder {
   height: 50px;

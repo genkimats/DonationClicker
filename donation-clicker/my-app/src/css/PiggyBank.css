@@ -11,6 +11,7 @@
   /* MODIFIED: Increased size to fill the space */
   width: 90%;
   max-width: 280px;
+  user-select: none;
 }
 .piggy-bank-image {
   width: 100%;
