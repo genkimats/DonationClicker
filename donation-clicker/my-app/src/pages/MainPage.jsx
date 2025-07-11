@@ -89,6 +89,11 @@ function MainPage({ user, setUser }) {
           onAnimationEnd={handleAnimationEnd}
         >
           <img
+            src="/images/congratulation.gif"
+            alt="Congratulation"
+            className="congratulation-gif"
+          />
+          <img
             src="/images/child-bowing.gif"
             alt="A child is saved!"
             className="bowing-child-gif"
