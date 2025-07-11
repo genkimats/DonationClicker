@@ -25,7 +25,7 @@ function MainPage({ user, setUser }) {
 
   useEffect(() => {
     const currentChildrenSaved = Math.floor(
-      localUser.donated / DONATION_PER_CHILD
+      localUser.donated / (DONATION_PER_CHILD - 0.001)
     );
 
     if (currentChildrenSaved > prevChildrenSaved.current) {

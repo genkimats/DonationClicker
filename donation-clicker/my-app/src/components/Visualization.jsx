@@ -8,17 +8,18 @@ function Visualization({ user }) {
   const [walkingChildren, setWalkingChildren] = useState([]);
   const [lastDonated, setLastDonated] = useState(0);
 
-  const childrenSaved = Math.floor(user.donated / DONATION_PER_CHILD);
+  const childrenSaved = Math.floor(user.donated / (DONATION_PER_CHILD - 0.001));
   const progressToNextChild =
     ((user.donated % DONATION_PER_CHILD) / DONATION_PER_CHILD) * 100;
 
-  const houses = Array.from({ length: childrenSaved });
-
   // Your existing logic for walking children remains untouched
   useEffect(() => {
-    const prevCount = Math.floor(lastDonated);
-    const newCount = Math.floor(user.donated);
+    const prevCount = Math.floor(lastDonated + 0.0001);
+    const newCount = Math.floor(user.donated + 0.0001);
+    console.log("prevCount:", lastDonated);
+    console.log("newCount:", user.donated);
     if (newCount > prevCount) {
+      console.log("Here!");
       const numToAdd = newCount - prevCount;
       const newChildren = [];
       for (let i = 0; i < numToAdd; i++) {
@@ -55,15 +56,6 @@ function Visualization({ user }) {
             />
           );
         })}
-        {houses.map((_, index) => (
-          <img
-            key={`house-${index}`}
-            src="/images/house.png"
-            alt="house"
-            className="house"
-            style={{ left: `${10 + index * 15}%`, bottom: "10%" }}
-          />
-        ))}
       </div>
       <p>Children Saved: {childrenSaved}</p>
       <h4>Progress to saving the next child:</h4>
