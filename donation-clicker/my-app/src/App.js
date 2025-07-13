@@ -5,7 +5,7 @@ import MainPage from "./pages/MainPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import { socket } from "./socket";
 import "./css/App.css";
-import sdgsLogo from "./assets/sdgs-logo.png";
+import sdgsLogo from "./assets/logo.png";
 
 function App() {
   const [user, setUser] = useState(null);
