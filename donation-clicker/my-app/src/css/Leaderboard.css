@@ -1,14 +1,145 @@
-.leaderboard-container {
+/* Main container for the whole leaderboard page */
+.leaderboard-page-container {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
   padding: 2rem;
+  font-family: sans-serif;
+  color: #333;
 }
 
-.leaderboard-list,
-.global-stats {
-  width: 45%;
+/* Base style for the cards */
+.global-stats-card,
+.leaderboard-list-card {
+  background-color: #fffaf5; /* A warm, light cream color */
+  border: 3px solid #e49e7b; /* Border color from your main page theme */
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-ol {
-  list-style-position: inside;
+h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #d0665f; /* Header color from your theme */
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Global Stats Card Styles */
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.stats-value {
+  font-weight: bold;
+}
+
+.progress-section {
+  margin-top: 1.5rem;
+}
+
+.progress-section h4 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: normal;
+  color: #555;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: #f0e4d9;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 28px;
+  border: 2px solid #e49e7b;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #d0665f, #e49e7b);
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Leaderboard List Card Styles */
+.leaderboard-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.leaderboard-entry {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #f0e4d9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.leaderboard-entry:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.entry-rank {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #d0665f;
+  width: 40px;
+  text-align: center;
+}
+
+.entry-username {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding-left: 1rem;
+}
+
+.entry-amount {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #4a5d53;
+}
+
+/* Special styles for Top 3 */
+.leaderboard-entry.rank-1,
+.leaderboard-entry.rank-2,
+.leaderboard-entry.rank-3 {
+  border-width: 2px;
+}
+
+.leaderboard-entry.rank-1 {
+  border-color: #ffd700; /* Gold */
+}
+.leaderboard-entry.rank-1 .entry-rank {
+  color: #ffd700;
+}
+
+.leaderboard-entry.rank-2 {
+  border-color: #c0c0c0; /* Silver */
+}
+.leaderboard-entry.rank-2 .entry-rank {
+  color: #c0c0c0;
+}
+
+.leaderboard-entry.rank-3 {
+  border-color: #cd7f32; /* Bronze */
+}
+.leaderboard-entry.rank-3 .entry-rank {
+  color: #cd7f32;
 }

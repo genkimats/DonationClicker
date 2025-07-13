@@ -16,7 +16,7 @@ const io = new Server(server, {
 });
 
 const DB_FILE = "./db.json";
-const DONATION_PER_CHILD = 1;
+const DONATION_PER_CHILD = 500;
 
 // --- Data Persistence Functions ---
 
@@ -86,15 +86,14 @@ io.on("connection", (socket) => {
     callback({ success: true, user });
   });
 
-  socket.on("donate", (amount, clicks) => {
-    if (socket.username && users[socket.username]) {
-      users[socket.username].donated += amount;
-      users[socket.username].clicks += clicks;
+  socket.on("donate", ({ username, amount, clicks }) => {
+    if (users[username]) {
+      users[username].donated += amount;
+      users[username].clicks += clicks;
       totals.totalDonations += amount;
       updateTotals();
-      writeData({ users, totals }); // <-- Save data to file
+      writeData({ users, totals });
 
-      // Broadcast updates to all clients
       io.emit("updateLeaderboard", getLeaderboard());
       io.emit("updateTotals", totals);
     }

@@ -8,48 +8,29 @@ import { socket } from "../socket";
 import "../css/MainPage.css";
 import "../css/Visualization.css";
 
-const DONATION_PER_CHILD = 1;
-
 function MainPage({ user, setUser }) {
   const [localUser, setLocalUser] = useState(user);
   const [newlyUnlocked, setNewlyUnlocked] = useState(null);
   const [isChildSavedPopupVisible, setChildSavedPopupVisible] = useState(false);
-
-  // --- NEW: State to control the fade-out animation ---
   const [isFadingOut, setIsFadingOut] = useState(false);
 
-  const prevChildrenSaved = useRef(
-    Math.floor(user.donated / DONATION_PER_CHILD)
-  );
   const prevClicksRef = useRef(user.clicks);
 
-  useEffect(() => {
-    const currentChildrenSaved = Math.floor(
-      localUser.donated / (DONATION_PER_CHILD - 0.001)
-    );
+  const handleChildSaved = () => {
+    setIsFadingOut(false);
+    setChildSavedPopupVisible(true);
 
-    if (currentChildrenSaved > prevChildrenSaved.current) {
-      setIsFadingOut(false); // Reset fade-out state
-      setChildSavedPopupVisible(true);
-      prevChildrenSaved.current = currentChildrenSaved;
+    setTimeout(() => {
+      setIsFadingOut(true);
+    }, 3000);
+  };
 
-      // Set a timer to START the fade-out animation
-      const fadeOutTimer = setTimeout(() => {
-        setIsFadingOut(true);
-      }, 3000); // Start fading out after 2.5 seconds
-
-      return () => clearTimeout(fadeOutTimer);
-    }
-  }, [localUser.donated]);
-
-  // --- NEW: Function to hide the element after fade-out completes ---
   const handleAnimationEnd = () => {
     if (isFadingOut) {
       setChildSavedPopupVisible(false);
     }
   };
 
-  // Your other useEffect hooks remain untouched
   useEffect(() => {
     const justUnlocked = achievementsList
       .slice()
@@ -67,15 +48,16 @@ function MainPage({ user, setUser }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (localUser.donated > user.donated) {
-        socket.emit(
-          "donate",
-          localUser.donated - user.donated,
-          localUser.clicks - user.clicks
-        );
+      if (localUser.donated > user.donated + 0.0001) {
+        socket.emit("donate", {
+          username: localUser.username,
+          amount: localUser.donated - user.donated,
+          clicks: localUser.clicks - user.clicks,
+        });
         setUser(localUser);
       }
-    }, 100);
+    }, 1000);
+
     return () => clearInterval(interval);
   }, [localUser, user, setUser]);
 
@@ -83,9 +65,7 @@ function MainPage({ user, setUser }) {
     <div className="main-page-wrapper">
       {isChildSavedPopupVisible && (
         <div
-          // Add the 'fading-out' class to trigger the animation
           className={`popup-overlay ${isFadingOut ? "fading-out" : ""}`}
-          // Add the event listener to know when the animation is done
           onAnimationEnd={handleAnimationEnd}
         >
           <img
@@ -119,7 +99,11 @@ function MainPage({ user, setUser }) {
                 Total Clicks: {localUser.clicks}
               </div>
             </div>
-            <Clicker user={localUser} setUser={setLocalUser} />
+            <Clicker
+              user={localUser}
+              setUser={setLocalUser}
+              onChildSaved={handleChildSaved}
+            />
             <PiggyBank donated={localUser.donated} />
           </div>
           <div className="panel middle-panel">
