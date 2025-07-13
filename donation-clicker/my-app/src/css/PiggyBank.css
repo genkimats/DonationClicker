@@ -8,7 +8,6 @@
 }
 .piggy-bank {
   position: relative;
-  /* MODIFIED: Increased size to fill the space */
   width: 90%;
   max-width: 280px;
   user-select: none;
@@ -17,6 +16,7 @@
   width: 100%;
   position: relative;
   z-index: 2;
+  transition: transform 0.2s ease-in-out;
 }
 .piggy-bank-fill {
   position: absolute;

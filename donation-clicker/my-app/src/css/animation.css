@@ -1,0 +1,120 @@
+/* ========================
+   Falling Coin Animation
+   ======================== */
+
+   @keyframes fall {
+    from {
+      /* Animation starts from the center of the big coin */
+      transform: translateY(50px) scale(0.8);
+      opacity: 1;
+    }
+    to {
+      /* Animation ends roughly where the piggy bank is */
+      transform: translateY(250px) scale(0.2);
+      opacity: 0;
+    }
+  }
+  
+  .falling-coin {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 50px;
+    height: 50px;
+    
+    /* Hard-coded mini coin style */
+    background-color: #f7c72a;
+    border-radius: 50%;
+    border: 4px solid #e6a400;
+  
+    animation: fall 0.5s ease-in forwards;
+    z-index: 10;
+  }
+  
+  /* This container holds the falling coins */
+  .falling-coins-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through to the coin below */
+  }
+  
+  /* ========================
+     Piggy Jump Animation
+     ======================== */
+  
+  @keyframes jump {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-15px) scale(1.05);
+    }
+  }
+  
+  /* The class that triggers the jump */
+  .happy-pig {
+    animation: jump 0.3s ease-in-out;
+  }
+  /* ========================
+   Falling Coin Animation
+   ======================== */
+
+@keyframes fall {
+  from {
+    transform: translateY(50px) scale(0.8);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(250px) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.falling-coin {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 50px;
+  height: 50px;
+  
+  /* Hard-coded mini coin style for the div */
+  background-color: #f7c72a;
+  border-radius: 50%;
+  border: 4px solid #e6a400;
+
+  animation: fall 0.5s ease-in forwards;
+  z-index: 10;
+}
+
+/* This container holds the falling coins */
+.falling-coins-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through */
+}
+
+/* ========================
+   Piggy Wiggle Animation
+   ======================== */
+
+@keyframes happyWiggle {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-5deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
+  75% { transform: scale(1.1) rotate(-5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* The class that triggers the wiggle */
+.happy-pig {
+  animation: happyWiggle 0.4s ease-in-out;
+}
