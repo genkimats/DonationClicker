@@ -38,8 +38,15 @@ function Clicker({ user, setUser, onChildSaved }) {
   return (
     <div className="clicker-container">
       {/* This is a div styled by Clicker.css */}
-      <div className="coin-image" onClick={handleClick} />
-      
+      <div className="coin-image" onClick={handleClick}>
+        <img
+          src="/images/coin.png"
+          alt="Donate Coin"
+          className="coin-image"
+          onClick={handleClick}
+        />
+      </div>
+
       <div className="falling-coins-container">
         {fallingCoins.map((coin) => (
           // This is a div styled by animation.css

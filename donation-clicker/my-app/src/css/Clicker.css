@@ -11,13 +11,6 @@
   cursor: pointer;
   transition: transform 0.1s;
   user-select: none;
-  
-  /* Add styles to make the div look like a coin and center it */
-  background-color: #f7c72a;
-  border-radius: 50%;
-  border: 8px solid #e6a400;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.2);
-  margin: 0 auto;
 }
 
 .coin-image:active {
