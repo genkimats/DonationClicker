@@ -10,7 +10,6 @@
   flex-shrink: 0;
 }
 .logo-container {
-  
   /* background-color: rgb(193, 42, 42); */
   /* padding: 5px;
   border: 5px solid #d0665f; */
@@ -22,10 +21,10 @@
   user-select: none;
 }
 .header-placeholder {
-  height: 50px;
+  height: 54.86px;
   background-color: #d0665f;
   flex-grow: 1;
-  margin-left: 20px;
+  margin-left:0px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
