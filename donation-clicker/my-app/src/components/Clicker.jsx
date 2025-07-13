@@ -52,7 +52,7 @@ function Clicker({ user, setUser, onChildSaved }) {
           // This is a div styled by animation.css
           <div
             key={coin.id}
-            className="falling-coin"
+            clssName="falling-coin"
             onAnimationEnd={() => handleAnimationEnd(coin.id)}
           />
         ))}
