@@ -16,7 +16,7 @@
   margin: 0;
   display: grid;
   /* Creates a 3-column grid */
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
   /* Defines the gap between hexagons */
   gap: 8px;
   width: 100%;
@@ -28,7 +28,7 @@
   position: relative;
   /* This ensures the hexagon maintains its aspect ratio */
   width: 100%;
-  padding-bottom: 115.47%; 
+  padding-bottom: 115.47%;
 }
 
 .hexagon-inner {
@@ -55,7 +55,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
 }
 
 .hexagon-label {
