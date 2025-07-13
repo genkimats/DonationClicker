@@ -29,6 +29,12 @@
       "password": "dfg",
       "donated": 0,
       "clicks": 0
+    },
+    "yuina": {
+      "username": "yuina",
+      "password": "123",
+      "donated": 0,
+      "clicks": 0
     }
   },
   "totals": {
