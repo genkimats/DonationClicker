@@ -1,28 +1,54 @@
 .visualization-container {
   text-align: center;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.visualization-container h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.visualization-container h4 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #444;
+}
+
+.visualization-container p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.5rem 0;
 }
 
 /* The main container for the scene */
 .scene {
   width: 100%;
-  height: 300px;
-  background-image: url("/public/images/background.jpg");
+  height: 320px;
+  background-image: url("../assets/background.jpg");
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
+  border-radius: 10px;
   position: relative;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #e1e1e1;
 }
 
-/* The animated walking child (shared base style) */
+/* Animated walking child base */
 .walking-child {
   position: absolute;
-  height: 30%;
+  height: 20%;
   z-index: 4;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   user-select: none;
+  pointer-events: none;
 }
 
 /* Walk left to right */
@@ -35,38 +61,6 @@
   animation-name: walk-left;
 }
 
-/* The houses that appear with progress */
-.house {
-  position: absolute;
-  height: 25%;
-  z-index: 5;
-  user-select: none;
-}
-
-/* The progress bar styles */
-.progress-bar-container {
-  width: 100%;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 0.5rem;
-}
-
-.visualization .progress-bar {
-  height: 100%;
-  background-color: #4caf50; /* Green progress color */
-  transition: width 0.5s ease-in-out;
-}
-
-.visualization .visualization-image {
-  width: 100%;
-  max-width: 400px;
-  margin-top: 15px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-}
-
-/* Keyframes: left to right */
 @keyframes walk-right {
   0% {
     left: -20%;
@@ -76,7 +70,6 @@
   }
 }
 
-/* Keyframes: right to left */
 @keyframes walk-left {
   0% {
     left: 100%;
@@ -86,8 +79,39 @@
   }
 }
 
-/* --- Add these new styles for the pop-up animations --- */
+.progress-bar-container {
+  position: relative;
+  width: 100%;
+  height: 26px;
+  background-color: #e6e6e6;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 0.75rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
 
+.progress-bar-fill {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(to right, #4caf50, #81c784);
+  transition: width 0.6s ease-in-out;
+  z-index: 1;
+}
+
+.progress-label {
+  position: absolute;
+  width: 65%;
+  text-align: center;
+  z-index: 2;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 26px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Popup overlay animations */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -99,19 +123,11 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  /* Apply the fade-in animation by default */
   animation: fade-in 0.5s ease-in-out;
 }
 
-/* NEW: This class will trigger the fade-out animation */
 .popup-overlay.fading-out {
   animation: fade-out 0.5s ease-in-out;
-}
-
-.bowing-child-gif {
-  width: 150px;
-  height: auto;
-  user-select: none;
 }
 
 @keyframes fade-in {
@@ -123,7 +139,6 @@
   }
 }
 
-/* NEW: Keyframes for the fade-out effect */
 @keyframes fade-out {
   from {
     opacity: 1;
@@ -131,4 +146,42 @@
   to {
     opacity: 0;
   }
+}
+
+/* Child bowing gif */
+.bowing-child-gif {
+  width: 180px;
+  height: auto;
+  user-select: none;
+}
+
+.children-saved-display {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  margin: 1rem auto;
+  background: linear-gradient(135deg, #d0665f, #ffcc80);
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  font-family: "Segoe UI", sans-serif;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.children-saved-display:hover {
+  transform: scale(1.05);
+}
+
+.children-saved-display .label {
+  display: block;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.children-saved-display .count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
 }

@@ -57,13 +57,26 @@ function Visualization({ user }) {
           );
         })}
       </div>
-      <p>Children Saved: {childrenSaved}</p>
+      <div className="children-saved-display">
+        <span className="label">Children Saved</span>
+        <span className="count">{childrenSaved}</span>
+      </div>
       <h4>Progress to saving the next child:</h4>
       <div className="progress-bar-container">
         <div
-          className="progress-bar"
+          className="progress-bar-fill"
           style={{ width: `${progressToNextChild}%` }}
         ></div>
+        <span className="progress-label">
+          $
+          {Math.max(
+            0,
+            (DONATION_PER_CHILD - (user.donated % DONATION_PER_CHILD)).toFixed(
+              2
+            )
+          )}{" "}
+          until next child
+        </span>
       </div>
     </div>
   );
