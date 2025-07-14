@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../css/Visualization.css";
 
-const DONATION_PER_CHILD = 1;
+const DONATION_PER_CHILD = 1000;
 
 // The isPopupVisible prop is no longer needed here
 function Visualization({ user }) {
@@ -18,11 +18,14 @@ function Visualization({ user }) {
     const newCount = Math.floor(user.donated + 0.0001);
     console.log("prevCount:", lastDonated);
     console.log("newCount:", user.donated);
-    if (newCount > prevCount) {
+    if (
+      Math.floor(newCount / DONATION_PER_CHILD) >
+      Math.floor(prevCount / DONATION_PER_CHILD)
+    ) {
       console.log("Here!");
       const numToAdd = newCount - prevCount;
       const newChildren = [];
-      for (let i = 0; i < numToAdd; i++) {
+      for (let i = 0; i < 1; i++) {
         const bottom = 10 + Math.random() * 30;
         const duration = 3 + Math.random() * 5;
         const direction = Math.random() < 0.5 ? "left" : "right";
@@ -45,7 +48,7 @@ function Visualization({ user }) {
           return (
             <img
               key={child.id}
-              src="/images/child-walking.jpg"
+              src="/images/child-walking.gif"
               alt="child walking"
               className={className}
               style={{

@@ -16,7 +16,7 @@ const io = new Server(server, {
 });
 
 const DB_FILE = "./db.json";
-const DONATION_PER_CHILD = 1;
+const DONATION_PER_CHILD = 1000;
 
 // --- Data Persistence Functions ---
 

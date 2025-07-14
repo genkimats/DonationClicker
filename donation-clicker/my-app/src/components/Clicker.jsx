@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../css/Clicker.css";
 import "../css/animation.css";
 
-const DONATION_PER_CHILD = 1;
+const DONATION_PER_CHILD = 1000;
 
 function Clicker({ user, setUser, onChildSaved }) {
   const [fallingCoins, setFallingCoins] = useState([]);
@@ -11,17 +11,17 @@ function Clicker({ user, setUser, onChildSaved }) {
     const newUser = {
       ...user,
       clicks: user.clicks + 1,
-      donated: user.donated + 0.1,
+      donated: user.donated + 1.5,
     };
 
-    const oldChildrenSaved = Math.floor(
-      (user.donated + 0.001) / DONATION_PER_CHILD
-    );
-    const newChildrenSaved = Math.floor(
-      (newUser.donated + 0.001) / DONATION_PER_CHILD
-    );
+    const oldChildrenSaved = Math.floor(user.donated + 0.001);
+    const newChildrenSaved = Math.floor(newUser.donated + 0.001);
 
-    if (newChildrenSaved > oldChildrenSaved && onChildSaved) {
+    if (
+      Math.floor(newChildrenSaved / DONATION_PER_CHILD) >
+        Math.floor(oldChildrenSaved / DONATION_PER_CHILD) &&
+      onChildSaved
+    ) {
       onChildSaved();
     }
 

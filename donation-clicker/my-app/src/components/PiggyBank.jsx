@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import '../css/PiggyBank.css';
-import piggyBankImage from '../assets/piggy-bank.png';
-import happyPiggyImage from '../assets/happy-pig.png';
+import React, { useState, useEffect } from "react";
+import "../css/PiggyBank.css";
+import piggyBankImage from "../assets/piggy-bank.png";
+import happyPiggyImage from "../assets/happy-pig.png";
 
 const PIGGY_BANK_GOAL = 1000;
 
@@ -25,11 +25,10 @@ const PiggyBank = ({ donated }) => {
   return (
     <div className="piggy-bank-container">
       <div className="piggy-bank">
-        <div className="piggy-bank-fill" style={{ height: fillHeight }}></div>
         <img
           src={isHappy ? happyPiggyImage : piggyBankImage}
           alt="Piggy Bank"
-          className={`piggy-bank-image ${isHappy ? 'happy-pig' : ''}`}
+          className={`piggy-bank-image ${isHappy ? "happy-pig" : ""}`}
         />
       </div>
     </div>

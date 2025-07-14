@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { socket } from "../socket";
+import "../css/LoginPage.css";
 
 function LoginPage({ setUser }) {
   const [username, setUsername] = useState("");
@@ -27,23 +28,33 @@ function LoginPage({ setUser }) {
   };
 
   return (
-    <div>
-      <h2>Login / Register</h2>
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username"
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={handleRegister}>Register</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div className="login-container">
+      <div className="login-box">
+        <h2 className="login-title">Welcome Back</h2>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          className="login-input"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="login-input"
+        />
+        <div className="login-buttons">
+          <button onClick={handleLogin} className="login-btn primary">
+            Login
+          </button>
+          <button onClick={handleRegister} className="login-btn secondary">
+            Register
+          </button>
+        </div>
+        {error && <p className="login-error">{error}</p>}
+      </div>
     </div>
   );
 }

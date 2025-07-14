@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Leaderboard.css"; // We will update this file next
 
-const SDG_GOAL_CHILD_LABOR = 100;
+const SDG_GOAL_CHILD_LABOR = 1000000;
 
 function Leaderboard({ leaderboard, totals }) {
   const progress = (totals.totalDonations / SDG_GOAL_CHILD_LABOR) * 100;
